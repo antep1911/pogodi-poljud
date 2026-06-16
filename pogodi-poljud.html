@@ -2,496 +2,511 @@
 <html lang="hr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Pogodi Poljud</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --blue: #1a3a6b;
-      --blue-light: #2255a4;
-      --white: #ffffff;
-      --accent: #c8a84b;
-      --bg: #f4f6fb;
-      --card: #ffffff;
-      --border: #e2e6ef;
-      --text: #1a1a2e;
-      --text-muted: #6b7280;
-      --success-bg: #ecfdf5;
-      --success-border: #6ee7b7;
-      --success-text: #065f46;
-      --warning-bg: #fffbeb;
-      --warning-border: #fcd34d;
-      --warning-text: #92400e;
-      --radius: 12px;
-      --radius-sm: 8px;
+      --blue: #0f2d5e; --blue-mid: #1a4a8a; --blue-light: #2563c8;
+      --blue-glow: rgba(37,99,200,0.15); --bg: #f0f4fa; --card: #ffffff;
+      --border: #dde3ef; --text: #0f1c2e; --text-muted: #5a6a80; --text-light: #8a9ab0;
+      --gold: #d4a017; --gold-bg: #fef7e0; --gold-border: #f0d060;
+      --success-bg: #e8faf2; --success-border: #5ccf99; --success-text: #0a6640;
+      --warning-bg: #fff8e6; --warning-border: #f0c040; --warning-text: #8a5000;
+      --danger: #dc2626; --radius: 16px; --radius-sm: 10px; --radius-xs: 6px;
+      --shadow: 0 2px 12px rgba(15,45,94,0.08); --shadow-lg: 0 8px 32px rgba(15,45,94,0.14);
     }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* ── LOGIN ── */
-    #login-screen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1a3a6b 0%, #2255a4 100%);
-      padding: 1rem;
-    }
-    .login-box {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 2.5rem 2rem;
-      width: 100%;
-      max-width: 360px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    }
-    .login-logo {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: var(--blue);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.25rem;
-      color: white; font-size: 13px; font-weight: 600;
-      text-align: center; line-height: 1.3; letter-spacing: 0.5px;
-    }
-    .login-box h1 { text-align: center; font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
-    .login-box p { text-align: center; font-size: 13px; color: var(--text-muted); margin-bottom: 2rem; }
+    #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: var(--blue); background-image: radial-gradient(circle at 20% 20%, rgba(37,99,200,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(212,160,23,0.15) 0%, transparent 50%); }
+    .login-box { background: white; border-radius: var(--radius); padding: 2.5rem 2rem; width: 100%; max-width: 380px; box-shadow: var(--shadow-lg); }
+    .login-crest { width: 88px; height: 88px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 4px 20px rgba(15,45,94,0.3); overflow: hidden; }
+    .login-crest img { width: 64px; height: 64px; object-fit: contain; }
+    .login-box h1 { text-align: center; font-size: 26px; font-weight: 800; color: var(--blue); margin-bottom: 4px; }
+    .login-box .subtitle { text-align: center; font-size: 14px; color: var(--text-muted); margin-bottom: 2rem; }
     .field { margin-bottom: 14px; }
-    .field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .field input {
-      width: 100%; padding: 10px 14px;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-size: 15px; color: var(--text);
-      outline: none; transition: border-color 0.15s;
-      background: white;
-    }
-    .field input:focus { border-color: var(--blue-light); }
-    .btn-login {
-      width: 100%; padding: 12px;
-      background: var(--blue); color: white;
-      border: none; border-radius: var(--radius-sm);
-      font-size: 15px; font-weight: 600; cursor: pointer;
-      margin-top: 6px; transition: background 0.15s;
-    }
-    .btn-login:hover { background: var(--blue-light); }
-    .login-error {
-      color: #dc2626; font-size: 13px; margin-top: 10px;
-      text-align: center; display: none;
-    }
+    .field label { display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
+    .field input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 16px; color: var(--text); outline: none; background: white; -webkit-appearance: none; }
+    .field input:focus { border-color: var(--blue-light); box-shadow: 0 0 0 3px var(--blue-glow); }
+    .btn-login { width: 100%; padding: 14px; background: var(--blue); color: white; border: none; border-radius: var(--radius-sm); font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px; box-shadow: 0 4px 14px rgba(15,45,94,0.3); }
+    .login-error { color: var(--danger); font-size: 13px; margin-top: 10px; text-align: center; display: none; }
 
-    /* ── MAIN APP ── */
-    #main-app { display: none; min-height: 100vh; }
+    #main-app { display: none; min-height: 100vh; padding-bottom: 80px; }
+    .topbar { background: var(--blue); color: white; padding: 0 1.25rem; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(15,45,94,0.25); }
+    .topbar-left { display: flex; align-items: center; gap: 10px; }
+    .topbar-crest { width: 34px; height: 34px; border-radius: 50%; background: white; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .topbar-crest img { width: 26px; height: 26px; object-fit: contain; }
+    .topbar-title { font-size: 16px; font-weight: 800; color: white; }
+    .topbar-sub { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 1px; }
+    .user-btn { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 99px; padding: 7px 14px; font-size: 13px; font-weight: 600; color: white; cursor: pointer; }
 
-    .topbar {
-      background: var(--blue);
-      color: white;
-      padding: 0 1.5rem;
-      height: 60px;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 100;
-    }
-    .topbar-left { display: flex; align-items: center; gap: 12px; }
-    .topbar-logo {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: white; color: var(--blue);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 10px; font-weight: 700; text-align: center; line-height: 1.2;
-    }
-    .topbar h1 { font-size: 17px; font-weight: 700; color: white; }
-    .topbar-sub { font-size: 11px; color: rgba(255,255,255,0.65); }
-    .user-btn {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 99px; padding: 6px 14px;
-      font-size: 13px; color: white; cursor: pointer;
-    }
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--border); display: flex; z-index: 100; padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -4px 20px rgba(15,45,94,0.08); }
+    .nav-btn { flex: 1; padding: 10px 4px 8px; border: none; background: transparent; font-size: 10px; font-weight: 600; color: var(--text-light); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .nav-btn i { font-size: 22px; }
+    .nav-btn.active { color: var(--blue); }
 
-    .nav-bar {
-      background: white;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      padding: 0 1rem;
-      overflow-x: auto;
-    }
-    .nav-btn {
-      padding: 14px 16px;
-      border: none; background: transparent;
-      font-size: 14px; font-weight: 500;
-      color: var(--text-muted); cursor: pointer;
-      border-bottom: 2px solid transparent;
-      display: flex; align-items: center; gap: 6px;
-      white-space: nowrap;
-      transition: color 0.15s;
-    }
-    .nav-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
-
-    .content { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 1.25rem;
-    }
-    .card-head {
-      background: var(--blue); color: white;
-      padding: 12px 20px; font-size: 13px; font-weight: 600;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .card-body { padding: 1.25rem; }
-
-    /* match card */
-    .teams {
-      display: flex; align-items: center; justify-content: center;
-      gap: 2rem; padding: 1rem 0 1.25rem;
-    }
-    .team { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; }
-    .team-emblem {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: var(--bg); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center; font-size: 28px;
-    }
-    .team-name { font-size: 14px; font-weight: 600; text-align: center; color: var(--text); }
-    .vs { font-size: 22px; font-weight: 700; color: var(--text-muted); flex-shrink: 0; }
-
-    .match-meta { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 1.25rem; }
-    .meta-pill {
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: 99px; padding: 5px 12px; font-size: 12px; color: var(--text-muted);
-      display: flex; align-items: center; gap: 5px;
-    }
-
-    .bet-section { border-top: 1px solid var(--border); padding-top: 1.25rem; }
-    .bet-label { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
-    .bet-row { display: flex; gap: 8px; }
-    .bet-row input {
-      flex: 1; padding: 10px 14px;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-size: 15px; outline: none;
-    }
-    .bet-row input:focus { border-color: var(--blue-light); }
-    .btn-primary {
-      background: var(--blue); color: white;
-      border: none; border-radius: var(--radius-sm);
-      padding: 10px 20px; font-size: 14px; font-weight: 600;
-      cursor: pointer; white-space: nowrap;
-    }
-    .btn-primary:hover { background: var(--blue-light); }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .alert {
-      border-radius: var(--radius-sm); padding: 12px 16px;
-      font-size: 14px; display: flex; align-items: center; gap: 8px;
-    }
-    .alert-success { background: var(--success-bg); border: 1px solid var(--success-border); color: var(--success-text); }
-    .alert-warning { background: var(--warning-bg); border: 1px solid var(--warning-border); color: var(--warning-text); }
-
-    .points-legend { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
-    .legend-pill {
-      border-radius: 99px; padding: 5px 13px; font-size: 12px; font-weight: 500;
-      display: flex; align-items: center; gap: 5px;
-    }
-    .l3 { background: #fef3c7; color: #92400e; }
-    .l2 { background: #dbeafe; color: #1e40af; }
-    .l1 { background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
-
-    /* leaderboard */
-    .lb-table { width: 100%; border-collapse: collapse; }
-    .lb-table th { padding: 10px 20px; font-size: 12px; font-weight: 600; color: var(--text-muted); text-align: left; border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.4px; }
-    .lb-table td { padding: 14px 20px; font-size: 14px; border-bottom: 1px solid var(--border); }
-    .lb-table tr:last-child td { border-bottom: none; }
-    .lb-table tr.me td { background: #f0f4ff; }
-    .rank-badge { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
-    .r1 { background: #fef3c7; color: #92400e; }
-    .r2 { background: #f1f5f9; color: #475569; }
-    .r3 { background: #fef9ec; color: #b45309; }
-    .rn { background: var(--bg); color: var(--text-muted); }
-    .pts-badge { background: var(--blue); color: white; border-radius: 99px; padding: 3px 11px; font-size: 12px; font-weight: 700; }
-
-    /* hall of fame */
-    .hof-row { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
-    .hof-row:last-child { border-bottom: none; }
-    .hof-trophy { width: 44px; height: 44px; border-radius: 50%; background: #fef3c7; display: flex; align-items: center; justify-content: center; color: #92400e; flex-shrink: 0; }
-    .hof-name { font-size: 15px; font-weight: 700; }
-    .hof-season { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-    .hof-pts { font-size: 13px; color: var(--text-muted); margin-left: auto; }
-
-    /* admin */
-    .field-group { margin-bottom: 16px; }
-    .field-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
-    .field-group input, .field-group select {
-      width: 100%; padding: 10px 14px;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-size: 14px; outline: none; background: white;
-    }
-    .field-group input:focus { border-color: var(--blue-light); }
-    .field-row { display: flex; gap: 8px; }
-    .field-row input { flex: 1; }
-    .emoji-grid { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-    .emoji-opt {
-      width: 42px; height: 42px; border-radius: var(--radius-sm);
-      border: 1.5px solid var(--border); background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; cursor: pointer; transition: border-color 0.1s;
-    }
-    .emoji-opt.sel { border-color: var(--blue); border-width: 2px; background: #eff4ff; }
-
-    .divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
-
-    .bets-reveal { background: var(--bg); border-radius: var(--radius-sm); padding: 12px; margin-top: 14px; }
-    .bet-reveal-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 4px; border-bottom: 1px solid var(--border); font-size: 14px; gap: 8px; }
-    .bet-reveal-row:last-child { border-bottom: none; }
-    .winner-tag { background: #fef3c7; color: #92400e; border-radius: 99px; padding: 2px 9px; font-size: 11px; font-weight: 600; }
-    .diff-tag { font-size: 12px; color: var(--text-muted); }
-
-    .loading { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 14px; }
-    .empty { text-align: center; padding: 2.5rem; color: var(--text-muted); font-size: 14px; }
-
+    .content { max-width: 480px; margin: 0 auto; padding: 1.25rem 1rem; }
     .section { display: none; }
     .section.active { display: block; }
 
-    .toast {
-      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-      background: #1a1a2e; color: white; padding: 12px 20px;
-      border-radius: 99px; font-size: 14px; font-weight: 500;
-      z-index: 9999; opacity: 0; transition: opacity 0.2s;
-      pointer-events: none; white-space: nowrap;
-    }
+    .match-hero { background: var(--blue); border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem; box-shadow: var(--shadow-lg); position: relative; }
+    .match-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(37,99,200,0.5) 0%, transparent 70%); pointer-events: none; }
+    .match-hero-top { padding: 1rem 1.25rem 0; display: flex; align-items: center; justify-content: space-between; }
+    .match-round-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); border-radius: 99px; padding: 4px 12px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.6px; }
+    .match-league-tag { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 600; text-transform: uppercase; }
+    .match-teams { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; gap: 1rem; }
+    .match-team { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
+    .match-emblem { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.2); overflow: hidden; font-size: 32px; }
+    .match-emblem img { width: 54px; height: 54px; object-fit: contain; }
+    .match-team-name { font-size: 13px; font-weight: 700; color: white; text-align: center; line-height: 1.3; }
+    .match-vs { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+    .match-info-bar { background: rgba(0,0,0,0.2); padding: 10px 1.25rem; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .match-info-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 500; }
+    .match-info-item i { font-size: 14px; color: rgba(255,255,255,0.5); }
+
+    .bet-box { background: white; border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
+    .bet-box-title { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+    .bet-input-wrap { display: flex; gap: 8px; }
+    .bet-input-wrap input { flex: 1; padding: 13px 16px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 18px; font-weight: 700; color: var(--blue); outline: none; -webkit-appearance: none; }
+    .bet-input-wrap input:focus { border-color: var(--blue-light); box-shadow: 0 0 0 3px var(--blue-glow); }
+    .bet-input-wrap input::placeholder { font-weight: 400; color: var(--text-light); font-size: 15px; }
+    .btn-bet { background: var(--blue); color: white; border: none; border-radius: var(--radius-sm); padding: 13px 20px; font-size: 15px; font-weight: 700; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 14px rgba(15,45,94,0.25); }
+    .btn-bet:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .alert { border-radius: var(--radius-sm); padding: 14px 16px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
+    .alert i { font-size: 20px; flex-shrink: 0; }
+    .alert-success { background: var(--success-bg); border: 1.5px solid var(--success-border); color: var(--success-text); }
+    .alert-warning { background: var(--warning-bg); border: 1.5px solid var(--warning-border); color: var(--warning-text); }
+
+    .countdown-box { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+    .countdown-box.urgent { background: #fff0f0; border-color: #fca5a5; }
+    .countdown-label { font-size: 12px; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+    .countdown-box.urgent .countdown-label { color: var(--danger); }
+    .countdown-time { font-size: 16px; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; }
+    .countdown-box.urgent .countdown-time { color: var(--danger); }
+
+    .points-row { display: flex; gap: 8px; margin-bottom: 1.25rem; }
+    .pts-pill { flex: 1; border-radius: var(--radius-sm); padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 3px; border: 1.5px solid transparent; }
+    .pts-pill .pts-num { font-size: 20px; font-weight: 800; }
+    .pts-pill .pts-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; text-align: center; }
+    .pts-3 { background: var(--gold-bg); border-color: var(--gold-border); color: var(--gold); }
+    .pts-2 { background: #e8f0ff; border-color: #b8ccff; color: var(--blue-mid); }
+    .pts-1 { background: var(--bg); border-color: var(--border); color: var(--text-muted); }
+
+    .section-title { font-size: 18px; font-weight: 800; color: var(--blue); margin-bottom: 1rem; }
+    .lb-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .lb-row { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .lb-row:last-child { border-bottom: none; }
+    .lb-row.me { background: #f0f4ff; }
+    .lb-row.top1 { background: linear-gradient(90deg, #e8f0ff 0%, #f4f7ff 100%); }
+    .lb-row.top2 { background: linear-gradient(90deg, #e8f5ee 0%, #f4faf7 100%); }
+    .lb-row.top3 { background: linear-gradient(90deg, #fdf3e8 0%, #fdf8f3 100%); }
+    .rank-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+    .rank-1 { background: #dbeafe; color: #1d4ed8; border: 1.5px solid #93c5fd; }
+    .rank-2 { background: #dcfce7; color: #15803d; border: 1.5px solid #86efac; }
+    .rank-3 { background: #ffedd5; color: #c2410c; border: 1.5px solid #fdba74; }
+    .rank-n { background: var(--bg); color: var(--text-light); border: 1px solid var(--border); }
+    .lb-name { flex: 1; font-size: 15px; font-weight: 700; color: var(--text); min-width: 0; }
+    .lb-bets { font-size: 12px; color: var(--text-light); font-weight: 600; white-space: nowrap; }
+    .lb-pts { background: var(--blue); color: white; border-radius: 99px; padding: 4px 14px; font-size: 13px; font-weight: 800; white-space: nowrap; }
+    .lb-edit { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; color: var(--text-muted); flex-shrink: 0; }
+    .lb-edit:hover { border-color: var(--blue); color: var(--blue); }
+    .you-tag { font-size: 10px; font-weight: 700; color: var(--blue-light); text-transform: uppercase; letter-spacing: 0.4px; display: block; }
+
+    .hof-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .hof-header { background: var(--blue); padding: 1.25rem; text-align: center; }
+    .hof-header-title { font-size: 16px; font-weight: 800; color: white; }
+    .hof-header-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .hof-row { display: flex; align-items: center; gap: 14px; padding: 16px; border-bottom: 1px solid var(--border); }
+    .hof-row:last-child { border-bottom: none; }
+    .hof-trophy { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-bg); border: 2px solid var(--gold-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+    .hof-winner { font-size: 16px; font-weight: 800; color: var(--text); }
+    .hof-season { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+    .hof-pts { font-size: 14px; font-weight: 800; color: var(--gold); }
+    .hof-actions { display: flex; gap: 6px; margin-left: auto; align-items: center; }
+    .hof-btn { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; color: var(--text-muted); flex-shrink: 0; }
+    .hof-btn.del:hover { border-color: var(--danger); color: var(--danger); }
+
+    .profile-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .profile-header { background: var(--blue); padding: 2rem 1.25rem 1.5rem; text-align: center; }
+    .profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 3px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 28px; font-weight: 800; color: white; }
+    .profile-name { font-size: 22px; font-weight: 800; color: white; }
+    .profile-email { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .profile-body { padding: 1.25rem; }
+    .pw-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+    .pw-field { margin-bottom: 12px; }
+    .pw-field label { display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .pw-field input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; outline: none; -webkit-appearance: none; }
+    .pw-field input:focus { border-color: var(--blue-light); }
+    .btn-secondary { width: 100%; padding: 13px; background: var(--bg); color: var(--blue); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 4px; }
+    .btn-danger-outline { width: 100%; padding: 13px; background: white; color: var(--danger); border: 1.5px solid #fca5a5; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+    .divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+
+    .admin-card { background: white; border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .admin-card-title { font-size: 15px; font-weight: 800; color: var(--blue); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+    .admin-card-title i { font-size: 18px; }
+    .a-field { margin-bottom: 14px; }
+    .a-field label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .a-field input, .a-field select { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; outline: none; -webkit-appearance: none; background: white; }
+    .a-field input:focus, .a-field select:focus { border-color: var(--blue-light); }
+    .a-field-row { display: flex; gap: 8px; }
+    .a-field-row input { flex: 1; }
+    .club-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+    .club-opt { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 8px 4px; border-radius: var(--radius-sm); border: 2px solid var(--border); background: var(--bg); cursor: pointer; }
+    .club-opt img { width: 36px; height: 36px; object-fit: contain; }
+    .club-opt span { font-size: 9px; font-weight: 700; color: var(--text-muted); text-align: center; line-height: 1.2; text-transform: uppercase; }
+    .club-opt.sel { border-color: var(--blue); background: #e8f0ff; }
+    .club-opt.sel span { color: var(--blue); }
+    .btn-primary { width: 100%; padding: 14px; background: var(--blue); color: white; border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(15,45,94,0.2); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .reveal-result { background: var(--bg); border-radius: var(--radius-sm); padding: 12px; margin-top: 14px; }
+    .reveal-actual { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 10px; }
+    .reveal-actual strong { color: var(--text); font-size: 16px; }
+    .reveal-row { display: flex; align-items: center; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .reveal-row:last-child { border-bottom: none; }
+    .reveal-name { font-weight: 700; flex: 1; }
+    .reveal-val { color: var(--text-muted); font-weight: 600; }
+    .reveal-diff { font-size: 12px; color: var(--text-light); }
+    .reveal-pts { background: var(--blue); color: white; border-radius: 99px; padding: 3px 10px; font-size: 12px; font-weight: 800; }
+
+    .hist-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 1rem; }
+    .hist-card-head { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .hist-logo { width: 44px; height: 44px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+    .hist-match-info { flex: 1; min-width: 0; }
+    .hist-opponent { font-size: 14px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .hist-meta { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+    .hist-attendance { text-align: right; flex-shrink: 0; }
+    .hist-att-num { font-size: 16px; font-weight: 800; color: var(--blue); }
+    .hist-att-label { font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+    .hist-winner-bar { background: var(--gold-bg); border-bottom: 1px solid var(--gold-border); padding: 8px 16px; font-size: 13px; color: #92400e; display: flex; align-items: center; gap: 6px; }
+    .hist-results-wrap { padding: 8px 16px 4px; }
+    .hist-result-row { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .hist-result-row:last-child { border-bottom: none; }
+    .hist-result-name { font-weight: 700; flex: 1; }
+    .hist-result-val { color: var(--text-muted); font-weight: 600; }
+    .hist-result-diff { font-size: 11px; color: var(--text-light); min-width: 40px; text-align: right; }
+    .hist-result-pts { background: var(--bg); border: 1px solid var(--border); border-radius: 99px; padding: 2px 8px; font-size: 11px; font-weight: 800; color: var(--text-muted); }
+    .hist-result-pts.has-pts { background: var(--blue); border-color: var(--blue); color: white; }
+    .hist-toggle-btn { width: 100%; padding: 10px; border: none; background: var(--bg); color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; border-top: 1px solid var(--border); }
+    .hist-admin-btns { display: flex; gap: 6px; margin-left: 8px; }
+
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .modal-overlay.top { align-items: flex-start; padding-top: 2rem; }
+    .modal-box { background: white; border-radius: var(--radius); padding: 1.5rem; width: 100%; max-width: 340px; box-shadow: var(--shadow-lg); max-height: 85vh; overflow-y: auto; }
+    .modal-title { font-size: 16px; font-weight: 800; color: var(--blue); margin-bottom: 1rem; }
+    .modal-field { margin-bottom: 12px; }
+    .modal-field label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .modal-field input { width: 100%; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; outline: none; }
+    .modal-field input:focus { border-color: var(--blue-light); }
+    .modal-btns { display: flex; gap: 8px; margin-top: 14px; }
+    .modal-btns button { flex: 1; padding: 12px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; border: none; }
+    .modal-cancel { background: var(--bg); color: var(--text-muted); border: 1.5px solid var(--border) !important; }
+    .modal-save { background: var(--blue); color: white; }
+
+    .loading { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 14px; }
+    .empty-state { text-align: center; padding: 3rem 1rem; }
+    .empty-state i { font-size: 48px; color: var(--border); display: block; margin-bottom: 12px; }
+    .empty-state p { font-size: 15px; color: var(--text-muted); font-weight: 500; }
+
+    .toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); background: var(--blue); color: white; padding: 12px 20px; border-radius: 99px; font-size: 14px; font-weight: 600; z-index: 9999; opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap; box-shadow: 0 4px 20px rgba(15,45,94,0.3); }
     .toast.show { opacity: 1; }
+
+    @media (min-width: 480px) {
+      .bottom-nav { max-width: 480px; left: 50%; transform: translateX(-50%); border-radius: var(--radius) var(--radius) 0 0; border: 1px solid var(--border); border-bottom: none; }
+    }
   </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
-    <div class="login-logo">HNK<br>Split</div>
+    <div class="login-crest">
+      <img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/hajduk_split.png" alt="Hajduk Split" />
+    </div>
     <h1>Pogodi Poljud</h1>
-    <p>Prijavi se i postavi svoj bet</p>
+    <p class="subtitle">Tko će biti najbliži?</p>
     <div class="field">
       <label>Email</label>
-      <input type="email" id="login-email" placeholder="ante@hajduk.hr" />
+      <input type="email" id="login-email" placeholder="ante@hajduk.hr" autocomplete="email" />
     </div>
     <div class="field">
       <label>Lozinka</label>
-      <input type="password" id="login-pass" placeholder="••••••" />
+      <input type="password" id="login-pass" placeholder="••••••" autocomplete="current-password" />
     </div>
-    <button class="btn-login" onclick="doLogin()">Prijavi se</button>
+    <button class="btn-login" id="login-btn" onclick="doLogin()">Prijavi se</button>
     <div class="login-error" id="login-error">Pogrešan email ili lozinka.</div>
   </div>
 </div>
 
-<!-- MAIN APP -->
 <div id="main-app">
   <div class="topbar">
     <div class="topbar-left">
-      <div class="topbar-logo">HNK<br>Split</div>
+      <div class="topbar-crest">
+        <img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/hajduk_split.png" alt="Hajduk" />
+      </div>
       <div>
-        <div class="topbar h1" style="font-size:17px;font-weight:700;color:white;">Pogodi Poljud</div>
+        <div class="topbar-title">Pogodi Poljud</div>
         <div class="topbar-sub">Attendance guessing league</div>
       </div>
     </div>
-    <div class="user-btn" onclick="doLogout()">
+    <div class="user-btn" onclick="switchTab('profile')">
       <i class="ti ti-user" style="font-size:14px;"></i>
       <span id="user-label">Ante</span>
-      <i class="ti ti-logout" style="font-size:13px;"></i>
     </div>
-  </div>
-
-  <div class="nav-bar">
-    <button class="nav-btn active" id="tab-bet" onclick="switchTab('bet')">
-      <i class="ti ti-target"></i> Bet
-    </button>
-    <button class="nav-btn" id="tab-standings" onclick="switchTab('standings')">
-      <i class="ti ti-trophy"></i> Standings
-    </button>
-    <button class="nav-btn" id="tab-hof" onclick="switchTab('hof')">
-      <i class="ti ti-medal"></i> Hall of fame
-    </button>
-    <button class="nav-btn" id="tab-admin" onclick="switchTab('admin')" style="display:none;">
-      <i class="ti ti-settings"></i> Admin
-    </button>
   </div>
 
   <div class="content">
-
-    <!-- BET TAB -->
+    <!-- BET -->
     <div id="section-bet" class="section active">
-      <div id="bet-loading" class="loading"><i class="ti ti-loader" style="font-size:24px;display:block;margin-bottom:8px;"></i> Loading match...</div>
-      <div id="no-match" class="card" style="display:none;">
-        <div class="empty">
-          <i class="ti ti-calendar-off" style="font-size:36px;display:block;margin-bottom:8px;"></i>
-          No upcoming match set yet.<br>Check back soon!
-        </div>
+      <div id="bet-loading" class="loading"><i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:8px;"></i>Učitavanje...</div>
+      <div id="no-match" style="display:none;">
+        <div class="empty-state"><i class="ti ti-calendar-off"></i><p>Nema nadolazećeg meča.<br>Provjeri uskoro!</p></div>
       </div>
-      <div id="match-card" class="card" style="display:none;">
-        <div class="card-head">
-          <i class="ti ti-calendar"></i>
-          <span id="match-round-label">Round —</span>
-        </div>
-        <div class="card-body">
-          <div class="teams">
-            <div class="team">
-              <div class="team-emblem">⚽</div>
-              <div class="team-name">HNK Hajduk Split</div>
+      <div id="match-display" style="display:none;">
+        <div class="match-hero">
+          <div class="match-hero-top">
+            <div class="match-round-tag" id="match-round-label">Kolo —</div>
+            <div class="match-league-tag" id="match-league-label">HNL</div>
+          </div>
+          <div class="match-teams">
+            <div class="match-team">
+              <div class="match-emblem"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/hajduk_split.png" alt="Hajduk Split" /></div>
+              <div class="match-team-name">HNK Hajduk<br>Split</div>
             </div>
-            <div class="vs">vs</div>
-            <div class="team">
-              <div class="team-emblem" id="opp-emblem">🔵</div>
-              <div class="team-name" id="opp-name">—</div>
+            <div class="match-vs">VS</div>
+            <div class="match-team">
+              <div class="match-emblem" id="opp-emblem-wrap">
+                <img id="opp-logo" src="" alt="" style="display:none;width:54px;height:54px;object-fit:contain;" />
+                <span id="opp-emoji" style="font-size:32px;display:none;">⚽</span>
+              </div>
+              <div class="match-team-name" id="opp-name">—</div>
             </div>
           </div>
-          <div class="match-meta">
-            <div class="meta-pill"><i class="ti ti-calendar" style="font-size:13px;"></i> <span id="match-date-disp">—</span></div>
-            <div class="meta-pill"><i class="ti ti-clock" style="font-size:13px;"></i> <span id="match-time-disp">—</span></div>
-            <div class="meta-pill"><i class="ti ti-map-pin" style="font-size:13px;"></i> Stadion Poljud</div>
-            <div class="meta-pill"><i class="ti ti-lock" style="font-size:13px;"></i> Bets close 30 min before</div>
-          </div>
-          <div class="bet-section">
-            <div id="bet-form-area">
-              <div class="bet-label">Your attendance guess</div>
-              <div class="bet-row">
-                <input type="number" id="bet-value" placeholder="e.g. 31500" min="1000" max="40000" />
-                <button class="btn-primary" id="bet-btn" onclick="placeBet()">Place bet</button>
-              </div>
-            </div>
-            <div id="bet-placed-area" style="display:none;">
-              <div class="alert alert-success">
-                <i class="ti ti-circle-check" style="font-size:18px;"></i>
-                Bet placed: <strong id="placed-num"></strong> — good luck!
-              </div>
-            </div>
-            <div id="bet-closed-area" style="display:none;">
-              <div class="alert alert-warning">
-                <i class="ti ti-lock" style="font-size:16px;"></i>
-                Betting is closed for this match.
-              </div>
-            </div>
-            <div id="bet-revealed-area" style="display:none;">
-              <div class="alert alert-success" style="margin-bottom:12px;">
-                <i class="ti ti-eye" style="font-size:16px;"></i>
-                Match result revealed! Check the standings.
-              </div>
-            </div>
+          <div class="match-info-bar">
+            <div class="match-info-item"><i class="ti ti-calendar"></i><span id="match-date-disp">—</span></div>
+            <div class="match-info-item"><i class="ti ti-clock"></i><span id="match-time-disp">—</span></div>
+            <div class="match-info-item"><i class="ti ti-map-pin"></i>Poljud</div>
           </div>
         </div>
-      </div>
-      <div class="points-legend">
-        <div class="legend-pill l3"><i class="ti ti-star" style="font-size:13px;"></i> Exact = 3 pts</div>
-        <div class="legend-pill l2"><i class="ti ti-arrows-horizontal" style="font-size:13px;"></i> ±50 = 2 pts</div>
-        <div class="legend-pill l1"><i class="ti ti-user" style="font-size:13px;"></i> Closest = 1 pt</div>
+        <div class="bet-box">
+          <div id="bet-form-area" style="display:none;">
+            <div class="bet-box-title">Tvoj tip — broj gledatelja</div>
+            <div class="bet-input-wrap">
+              <input type="number" id="bet-value" placeholder="npr. 31 500" min="1000" max="45000" inputmode="numeric" autocomplete="off" />
+              <button class="btn-bet" id="bet-btn" onclick="placeBet()">Bet</button>
+            </div>
+            <div id="countdown-wrap" style="display:none;">
+              <div class="countdown-box" id="countdown-box">
+                <div class="countdown-label"><i class="ti ti-lock" style="font-size:13px;"></i>Klađenje se zatvara za:</div>
+                <div class="countdown-time" id="countdown-time">--:--:--</div>
+              </div>
+            </div>
+          </div>
+          <div id="bet-placed-area" style="display:none;">
+            <div class="alert alert-success"><i class="ti ti-circle-check"></i><div>Bet placed: <strong id="placed-num"></strong><br><span style="font-size:12px;opacity:0.8;">Good luck!</span></div></div>
+          </div>
+          <div id="bet-closed-area" style="display:none;">
+            <div class="alert alert-warning"><i class="ti ti-lock"></i>Betting is closed for this match.</div>
+          </div>
+          <div id="bet-revealed-area" style="display:none;">
+            <div class="alert alert-success"><i class="ti ti-eye"></i>Match revealed! Check the standings.</div>
+          </div>
+        </div>
+        <div class="points-row">
+          <div class="pts-pill pts-3"><div class="pts-num">10</div><div class="pts-label">Najbliži</div></div>
+          <div class="pts-pill pts-2"><div class="pts-num">+5</div><div class="pts-label">±50 bonus</div></div>
+          <div class="pts-pill pts-1"><div class="pts-num">+30</div><div class="pts-label">Točan broj</div></div>
+        </div>
       </div>
     </div>
 
-    <!-- STANDINGS TAB -->
+    <!-- STANDINGS -->
     <div id="section-standings" class="section">
-      <div class="card">
-        <div class="card-head"><i class="ti ti-trophy"></i> Season 25/26 standings</div>
-        <div id="standings-body"><div class="loading">Loading...</div></div>
-      </div>
+      <div class="section-title">Ljestvica 25/26</div>
+      <div class="lb-card" id="lb-card"><div class="loading">Učitavanje...</div></div>
     </div>
 
-    <!-- HALL OF FAME TAB -->
+    <!-- HISTORY -->
+    <div id="section-history" class="section">
+      <div class="section-title">Povijest kola</div>
+      <div id="history-body"><div class="loading">Učitavanje...</div></div>
+    </div>
+
+    <!-- HOF -->
     <div id="section-hof" class="section">
-      <div class="card">
-        <div class="card-head"><i class="ti ti-medal"></i> Hall of fame — season winners</div>
-        <div id="hof-body"><div class="loading">Loading...</div></div>
+      <div class="section-title">Hall of fame</div>
+      <div class="hof-card">
+        <div class="hof-header">
+          <div class="hof-header-title">🏆 Pobjednici sezone</div>
+          <div class="hof-header-sub">Legendarni tipperi Poljuda</div>
+        </div>
+        <div id="hof-body"><div class="loading">Učitavanje...</div></div>
       </div>
     </div>
 
-    <!-- ADMIN TAB -->
+    <!-- PROFILE -->
+    <div id="section-profile" class="section">
+      <div class="section-title">Moj profil</div>
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profile-avatar">A</div>
+          <div class="profile-name" id="profile-name">Ante</div>
+          <div class="profile-email" id="profile-email">ante@hajduk.hr</div>
+        </div>
+        <div class="profile-body">
+          <div class="pw-title">Promjena lozinke</div>
+          <div class="pw-field"><label>Nova lozinka</label><input type="password" id="pw-new" placeholder="Minimalno 6 znakova" /></div>
+          <div class="pw-field"><label>Potvrdi lozinku</label><input type="password" id="pw-confirm" placeholder="Ponovi lozinku" /></div>
+          <button class="btn-secondary" onclick="changePassword()">Spremi novu lozinku</button>
+          <div class="divider"></div>
+          <button class="btn-danger-outline" onclick="doLogout()"><i class="ti ti-logout" style="font-size:16px;vertical-align:-2px;margin-right:6px;"></i>Odjavi se</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN -->
     <div id="section-admin" class="section">
-      <div class="card">
-        <div class="card-head"><i class="ti ti-calendar-event"></i> Set next match</div>
-        <div class="card-body">
-          <div class="field-group">
-            <label>Opponent</label>
-            <input type="text" id="a-opponent" placeholder="e.g. Dinamo Zagreb" />
+      <div class="section-title">Admin panel</div>
+      <div class="admin-card">
+        <div class="admin-card-title"><i class="ti ti-calendar-event"></i>Postavi novi meč</div>
+        <div class="a-field">
+          <label>Odaberi protivnika (HNL)</label>
+          <div class="club-grid" id="club-grid">
+            <div class="club-opt" onclick="selectClub(this,'Dinamo Zagreb','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/dinamo_zagreb.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/dinamo_zagreb.png" /><span>Dinamo Zagreb</span></div>
+            <div class="club-opt" onclick="selectClub(this,'HNK Rijeka','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/rijeka.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/rijeka.png" /><span>Rijeka</span></div>
+            <div class="club-opt" onclick="selectClub(this,'NK Osijek','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/osijek.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/osijek.png" /><span>Osijek</span></div>
+            <div class="club-opt" onclick="selectClub(this,'NK Varaždin','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/varazdin.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/varazdin.png" /><span>Varaždin</span></div>
+            <div class="club-opt" onclick="selectClub(this,'HNK Gorica','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/gorica.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/gorica.png" /><span>Gorica</span></div>
+            <div class="club-opt" onclick="selectClub(this,'NK Lokomotiva','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/lokomotiva.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/lokomotiva.png" /><span>Lokomotiva</span></div>
+            <div class="club-opt" onclick="selectClub(this,'NK Istra 1961','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/istra_1961.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/istra_1961.png" /><span>Istra 1961</span></div>
+            <div class="club-opt" onclick="selectClub(this,'NK Slaven Belupo','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/slaven_belupo.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/slaven_belupo.png" /><span>Slaven Belupo</span></div>
+            <div class="club-opt" onclick="selectClub(this,'NK Rudeš','https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/rudes.png')"><img src="https://raw.githubusercontent.com/antep1911/pogodi-poljud/main/logos/rudes.png" /><span>Rudeš</span></div>
           </div>
-          <div class="field-group">
-            <label>Opponent emblem</label>
-            <div class="emoji-grid" id="emoji-grid">
-              <div class="emoji-opt sel" onclick="pickEmoji(this,'🔵')">🔵</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'⚫')">⚫</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🔴')">🔴</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🟡')">🟡</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🟢')">🟢</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🟠')">🟠</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🦅')">🦅</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🐺')">🐺</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🏴‍☠️')">🏴‍☠️</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🐂')">🐂</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'⚡')">⚡</div>
-              <div class="emoji-opt" onclick="pickEmoji(this,'🌊')">🌊</div>
-            </div>
-          </div>
-          <div class="field-group">
-            <label>Date & time</label>
-            <div class="field-row">
-              <input type="date" id="a-date" />
-              <input type="time" id="a-time" value="19:05" />
-            </div>
-          </div>
-          <div class="field-group">
-            <label>Round label</label>
-            <input type="text" id="a-round" placeholder="e.g. Round 28 — HNL 25/26" />
-          </div>
-          <button class="btn-primary" onclick="saveMatch()" style="width:100%;">Save match & open betting</button>
         </div>
+        <div class="a-field" style="margin-top:8px;">
+          <label>ili — europski/drugi protivnik (upiši ime)</label>
+          <input type="text" id="a-custom-name" placeholder="npr. Salzburg" />
+        </div>
+        <div class="a-field">
+          <label>Datum i vrijeme</label>
+          <div class="a-field-row">
+            <input type="date" id="a-date" />
+            <input type="time" id="a-time" value="19:05" style="max-width:120px;" />
+          </div>
+        </div>
+        <div class="a-field"><label>Oznaka kola</label><input type="text" id="a-round" placeholder="npr. 1. kolo — HNL 25/26" /></div>
+        <div class="a-field"><label>Liga</label><input type="text" id="a-league" placeholder="HNL" value="HNL" /></div>
+        <button class="btn-primary" onclick="saveMatch()">Spremi meč i otvori klađenje</button>
       </div>
 
-      <div class="card">
-        <div class="card-head"><i class="ti ti-eye"></i> Reveal bets & score</div>
-        <div class="card-body">
-          <div class="field-group">
-            <label>Actual attendance</label>
-            <div class="bet-row">
-              <input type="number" id="a-actual" placeholder="e.g. 31200" />
-              <button class="btn-primary" onclick="revealAndScore()">Reveal & score</button>
-            </div>
+      <div class="admin-card">
+        <div class="admin-card-title"><i class="ti ti-eye"></i>Otkrij tipove i boduj</div>
+        <div class="a-field">
+          <label>Stvarni broj gledatelja</label>
+          <div class="a-field-row">
+            <input type="number" id="a-actual" placeholder="npr. 31 200" inputmode="numeric" />
+            <button class="btn-primary" onclick="revealAndScore()" style="width:auto;padding:12px 16px;">Otkrij</button>
           </div>
-          <div id="reveal-area"></div>
         </div>
+        <div id="reveal-area"></div>
       </div>
 
-      <div class="card">
-        <div class="card-head"><i class="ti ti-trophy"></i> Add season winner</div>
-        <div class="card-body">
-          <div class="field-group">
-            <label>Winner name</label>
-            <input type="text" id="hw-name" placeholder="e.g. Ante" />
-          </div>
-          <div class="field-group">
-            <label>Season</label>
-            <input type="text" id="hw-season" placeholder="e.g. 25/26" />
-          </div>
-          <div class="field-group">
-            <label>Total points</label>
-            <input type="number" id="hw-pts" placeholder="e.g. 14" />
-          </div>
-          <button class="btn-primary" onclick="addHofWinner()" style="width:100%;">Add to hall of fame</button>
+      <div class="admin-card">
+        <div class="admin-card-title"><i class="ti ti-trophy"></i>Dodaj pobjednika sezone</div>
+        <div class="a-field"><label>Ime pobjednika</label><input type="text" id="hw-name" placeholder="npr. Ante" /></div>
+        <div class="a-field"><label>Sezona</label><input type="text" id="hw-season" placeholder="npr. 25/26" /></div>
+        <div class="a-field"><label>Ukupno bodova</label><input type="number" id="hw-pts" placeholder="npr. 14" inputmode="numeric" /></div>
+        <button class="btn-primary" onclick="addHofWinner()">Dodaj u Hall of fame</button>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-title"><i class="ti ti-key"></i>Reset lozinke igrača</div>
+        <div style="background:var(--bg);border-radius:var(--radius-sm);padding:12px;font-size:13px;color:var(--text);font-weight:500;line-height:1.7;">
+          <strong>Firebase Console</strong><br>
+          → Security → Authentication → Users<br>
+          → Klikni na igrača → <strong>Reset password</strong>
         </div>
+        <a href="https://console.firebase.google.com/project/brojgledatelja/authentication/users" target="_blank" class="btn-primary" style="display:block;text-align:center;text-decoration:none;margin-top:12px;">Otvori Firebase Auth →</a>
+      </div>
+
+      <div class="admin-card" style="border:1.5px solid #fca5a5;">
+        <div class="admin-card-title" style="color:var(--danger);"><i class="ti ti-trash"></i>Danger zone</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;font-weight:600;">Obriši trenutni meč</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">Briše samo trenutni meč i tipove. Bodovi ostaju netaknuti.</p>
+        <button class="btn-danger-outline" onclick="deleteCurrentMatch()" style="margin-bottom:16px;">Obriši trenutni meč</button>
+        <div style="height:1px;background:var(--border);margin-bottom:16px;"></div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;font-weight:600;">Resetiraj sve podatke</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">Briše SVE tipove i SVE bodove. Ne može se poništiti!</p>
+        <button class="btn-danger-outline" onclick="clearAllData()">Obriši sve podatke</button>
       </div>
     </div>
+  </div>
 
+  <div class="bottom-nav">
+    <button class="nav-btn active" id="tab-bet" onclick="switchTab('bet')"><i class="ti ti-target"></i>Bet</button>
+    <button class="nav-btn" id="tab-standings" onclick="switchTab('standings')"><i class="ti ti-trophy"></i>Ljestvica</button>
+    <button class="nav-btn" id="tab-history" onclick="switchTab('history')"><i class="ti ti-calendar-stats"></i>Povijest</button>
+    <button class="nav-btn" id="tab-hof" onclick="switchTab('hof')"><i class="ti ti-medal"></i>Hall of fame</button>
+    <button class="nav-btn" id="tab-profile" onclick="switchTab('profile')"><i class="ti ti-user"></i>Profil</button>
+    <button class="nav-btn" id="tab-admin" onclick="switchTab('admin')" style="display:none;"><i class="ti ti-settings"></i>Admin</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<!-- FIREBASE -->
+<!-- HOF EDIT MODAL -->
+<div class="modal-overlay" id="hof-modal" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title">Uredi pobjednika</div>
+    <input type="hidden" id="edit-hof-id" />
+    <div class="modal-field"><label>Ime</label><input type="text" id="edit-hof-name" /></div>
+    <div class="modal-field"><label>Sezona</label><input type="text" id="edit-hof-season" /></div>
+    <div class="modal-field"><label>Bodovi</label><input type="number" id="edit-hof-pts" inputmode="numeric" /></div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeHofModal()">Odustani</button>
+      <button class="modal-save" onclick="saveHofEdit()">Spremi</button>
+    </div>
+  </div>
+</div>
+
+<!-- POINTS EDIT MODAL -->
+<div class="modal-overlay" id="pts-modal" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title">Uredi bodove — <span id="edit-pts-name-label"></span></div>
+    <input type="hidden" id="edit-pts-email" />
+    <div class="modal-field"><label>Bodovi</label><input type="number" id="edit-pts-points" inputmode="numeric" /></div>
+    <div class="modal-field"><label>Broj tipova</label><input type="number" id="edit-pts-bets" inputmode="numeric" /></div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closePtsModal()">Odustani</button>
+      <button class="modal-save" onclick="savePointsEdit()">Spremi</button>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORY EDIT MODAL -->
+<div class="modal-overlay top" id="hist-modal" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title">Uredi kolo</div>
+    <input type="hidden" id="edit-hist-id" />
+    <div class="modal-field"><label>Protivnik</label><input type="text" id="edit-hist-opponent" /></div>
+    <div class="modal-field"><label>Datum</label><input type="date" id="edit-hist-date" /></div>
+    <div class="modal-field"><label>Oznaka kola</label><input type="text" id="edit-hist-round" /></div>
+    <div class="modal-field"><label>Stvarni broj gledatelja</label><input type="number" id="edit-hist-attendance" inputmode="numeric" /></div>
+    <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Tipovi igrača</div>
+    <div id="edit-hist-results"></div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeHistModal()">Odustani</button>
+      <button class="modal-save" onclick="saveHistEdit()">Spremi</button>
+    </div>
+  </div>
+</div>
+
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCoEXVeCF5aD9tH0B_OTICyofCV_9BjqKQ",
@@ -503,14 +518,9 @@
   };
 
   const ADMIN_EMAIL = "ante@hajduk.hr";
-
   const DISPLAY_NAMES = {
-    "ante@hajduk.hr": "Ante",
-    "mile@hajduk.hr": "Mile",
-    "karlo@hajduk.hr": "Karlo",
-    "stipe@hajduk.hr": "Stipe",
-    "vinko@hajduk.hr": "Vinko",
-    "mario@hajduk.hr": "Mario",
+    "ante@hajduk.hr": "Ante", "mile@hajduk.hr": "Mile", "karlo@hajduk.hr": "Karlo",
+    "stipe@hajduk.hr": "Stipe", "vinko@hajduk.hr": "Vinko", "mario@hajduk.hr": "Mario",
   };
 
   const app = initializeApp(firebaseConfig);
@@ -518,24 +528,38 @@
   const db = getFirestore(app);
 
   let currentUser = null;
-  let selectedEmoji = '🔵';
-  let currentMatch = null;
+  let selectedClubName = '';
+  let selectedLogoUrl = '';
+  let countdownInterval = null;
 
   // ── AUTH ──
   window.doLogin = async () => {
     const email = document.getElementById('login-email').value.trim();
     const pass = document.getElementById('login-pass').value;
     const err = document.getElementById('login-error');
+    err.style.display = 'none';
     try {
       await signInWithEmailAndPassword(auth, email, pass);
-      err.style.display = 'none';
     } catch(e) {
       err.style.display = 'block';
     }
   };
 
-  window.doLogout = async () => {
-    await signOut(auth);
+  window.doLogout = async () => { await signOut(auth); };
+
+  window.changePassword = async () => {
+    const pw1 = document.getElementById('pw-new').value;
+    const pw2 = document.getElementById('pw-confirm').value;
+    if (!pw1 || pw1.length < 6) { showToast('Lozinka mora imati najmanje 6 znakova!'); return; }
+    if (pw1 !== pw2) { showToast('Lozinke se ne podudaraju!'); return; }
+    try {
+      await updatePassword(currentUser, pw1);
+      document.getElementById('pw-new').value = '';
+      document.getElementById('pw-confirm').value = '';
+      showToast('Lozinka uspješno promijenjena!');
+    } catch(e) {
+      showToast(e.code === 'auth/requires-recent-login' ? 'Odjavi se i prijavi ponovo, pa pokušaj opet.' : 'Greška pri promjeni lozinke.');
+    }
   };
 
   onAuthStateChanged(auth, user => {
@@ -543,18 +567,18 @@
       currentUser = user;
       const name = DISPLAY_NAMES[user.email] || user.email;
       document.getElementById('user-label').textContent = name;
+      document.getElementById('profile-name').textContent = name;
+      document.getElementById('profile-email').textContent = user.email;
+      document.getElementById('profile-avatar').textContent = name.charAt(0).toUpperCase();
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('main-app').style.display = 'block';
-      if (user.email === ADMIN_EMAIL) {
-        document.getElementById('tab-admin').style.display = '';
-      }
-      loadMatch();
-      loadStandings();
-      loadHof();
+      if (user.email === ADMIN_EMAIL) document.getElementById('tab-admin').style.display = '';
+      loadMatch(); loadStandings(); loadHof(); loadHistory();
     } else {
       currentUser = null;
       document.getElementById('login-screen').style.display = 'flex';
       document.getElementById('main-app').style.display = 'none';
+      document.getElementById('tab-admin').style.display = 'none';
     }
   });
 
@@ -563,51 +587,54 @@
 
   // ── TABS ──
   window.switchTab = (tab) => {
-    ['bet','standings','hof','admin'].forEach(t => {
+    ['bet','standings','history','hof','profile','admin'].forEach(t => {
       document.getElementById('section-' + t).classList.toggle('active', t === tab);
       const btn = document.getElementById('tab-' + t);
       if (btn) btn.classList.toggle('active', t === tab);
     });
+    if (tab === 'standings') loadStandings();
+    if (tab === 'hof') loadHof();
+    if (tab === 'history') loadHistory();
   };
 
   // ── MATCH ──
   async function loadMatch() {
     document.getElementById('bet-loading').style.display = 'block';
-    document.getElementById('match-card').style.display = 'none';
+    document.getElementById('match-display').style.display = 'none';
     document.getElementById('no-match').style.display = 'none';
-
     const matchDoc = await getDoc(doc(db, 'config', 'currentMatch'));
     document.getElementById('bet-loading').style.display = 'none';
-
     if (!matchDoc.exists() || !matchDoc.data().opponent) {
-      document.getElementById('no-match').style.display = 'block';
-      return;
+      document.getElementById('no-match').style.display = 'block'; return;
     }
-
-    currentMatch = matchDoc.data();
-    renderMatch(currentMatch);
+    window.currentMatch = matchDoc.data();
+    renderMatch(window.currentMatch);
   }
 
   async function renderMatch(m) {
-    document.getElementById('match-card').style.display = 'block';
-    document.getElementById('opp-emblem').textContent = m.emblem || '⚽';
+    document.getElementById('match-display').style.display = 'block';
     document.getElementById('opp-name').textContent = m.opponent;
-    document.getElementById('match-round-label').textContent = m.round || 'Upcoming match';
+    document.getElementById('match-round-label').textContent = m.round || 'Nadolazeći meč';
+    document.getElementById('match-league-label').textContent = m.league || 'HNL';
     document.getElementById('match-date-disp').textContent = formatDate(m.date);
     document.getElementById('match-time-disp').textContent = m.time;
 
-    document.getElementById('bet-form-area').style.display = 'none';
-    document.getElementById('bet-placed-area').style.display = 'none';
-    document.getElementById('bet-closed-area').style.display = 'none';
-    document.getElementById('bet-revealed-area').style.display = 'none';
-
-    if (m.revealed) {
-      document.getElementById('bet-revealed-area').style.display = 'block';
-      return;
+    const logo = document.getElementById('opp-logo');
+    const emoji = document.getElementById('opp-emoji');
+    if (m.logoUrl) {
+      logo.src = m.logoUrl; logo.style.display = 'block'; emoji.style.display = 'none';
+    } else {
+      logo.style.display = 'none'; emoji.style.display = 'block'; emoji.textContent = '⚽';
     }
 
+    ['bet-form-area','bet-placed-area','bet-closed-area','bet-revealed-area'].forEach(id => document.getElementById(id).style.display = 'none');
+    if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+
+    if (m.revealed) { document.getElementById('bet-revealed-area').style.display = 'block'; return; }
+
+    const matchId = m.createdAt || (m.date + m.time);
     const betDoc = await getDoc(doc(db, 'bets', currentUser.uid));
-    const hasBet = betDoc.exists();
+    const hasBet = betDoc.exists() && betDoc.data().value && betDoc.data().matchId === matchId;
     const closed = isDeadlinePassed(m.date, m.time);
 
     if (hasBet) {
@@ -617,208 +644,422 @@
       document.getElementById('bet-closed-area').style.display = 'block';
     } else {
       document.getElementById('bet-form-area').style.display = 'block';
+      startCountdown(m.date, m.time);
     }
+  }
+
+  function startCountdown(date, time) {
+    const matchDT = new Date(date + 'T' + time);
+    const deadline = new Date(matchDT.getTime() - 30 * 60 * 1000);
+    const wrap = document.getElementById('countdown-wrap');
+    const box = document.getElementById('countdown-box');
+    const timer = document.getElementById('countdown-time');
+
+    function tick() {
+      const diff = deadline - new Date();
+      if (diff <= 0) {
+        clearInterval(countdownInterval);
+        if (window.currentMatch) renderMatch(window.currentMatch);
+        return;
+      }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const pad = n => String(n).padStart(2, '0');
+      timer.textContent = h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+      const urgent = diff < 3600000;
+      box.className = 'countdown-box' + (urgent ? ' urgent' : '');
+    }
+
+    wrap.style.display = 'block';
+    tick();
+    countdownInterval = setInterval(tick, 1000);
   }
 
   window.placeBet = async () => {
     const val = parseInt(document.getElementById('bet-value').value);
-    if (!val || val < 1000 || val > 45000) { showToast('Enter a valid number between 1,000 and 45,000!'); return; }
-    if (!currentMatch || isDeadlinePassed(currentMatch.date, currentMatch.time)) { showToast('Betting is closed!'); return; }
+    if (!val || val < 1000 || val > 45000) { showToast('Unesi broj između 1.000 i 45.000!'); return; }
+    if (!window.currentMatch || isDeadlinePassed(window.currentMatch.date, window.currentMatch.time)) { showToast('Klađenje je zatvoreno!'); return; }
     const btn = document.getElementById('bet-btn');
     btn.disabled = true;
     try {
-      const name = DISPLAY_NAMES[currentUser.email] || currentUser.email;
+      const matchId = window.currentMatch.createdAt || (window.currentMatch.date + window.currentMatch.time);
       await setDoc(doc(db, 'bets', currentUser.uid), {
-        value: val,
-        userId: currentUser.uid,
-        email: currentUser.email,
-        name: name,
-        timestamp: new Date().toISOString()
+        value: val, userId: currentUser.uid, email: currentUser.email,
+        name: DISPLAY_NAMES[currentUser.email] || currentUser.email,
+        matchId, timestamp: new Date().toISOString()
       });
       document.getElementById('placed-num').textContent = val.toLocaleString();
       document.getElementById('bet-form-area').style.display = 'none';
       document.getElementById('bet-placed-area').style.display = 'block';
-      showToast('Bet placed!');
-    } catch(e) {
-      showToast('Error saving bet. Try again.');
-      btn.disabled = false;
-    }
+      if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+      document.getElementById('countdown-wrap').style.display = 'none';
+      showToast('Tip je zabilježen! 🎯');
+    } catch(e) { showToast('Greška. Pokušaj opet.'); btn.disabled = false; }
   };
 
   // ── STANDINGS ──
   async function loadStandings() {
     const snap = await getDocs(collection(db, 'scores'));
     const scores = {};
-    snap.forEach(d => { scores[d.id] = d.data(); });
+    snap.forEach(d => { scores[d.data().email] = { ...d.data(), uid: d.id }; });
+    const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+    const players = Object.entries(DISPLAY_NAMES).map(([email, name]) => {
+      const entry = scores[email] || { points: 0, bets: 0 };
+      return { name, email, points: entry.points || 0, bets: entry.bets || 0 };
+    }).sort((a, b) => b.points - a.points);
 
-    const allPlayers = Object.values(DISPLAY_NAMES).map(name => {
-      const uid = Object.keys(DISPLAY_NAMES).find(k => DISPLAY_NAMES[k] === name);
-      const entry = scores[uid] || { points: 0, bets: 0 };
-      return { name, points: entry.points || 0, bets: entry.bets || 0, uid };
-    });
-
-    allPlayers.sort((a, b) => b.points - a.points);
-
-    const tbody = allPlayers.map((p, i) => {
-      const isMe = currentUser && DISPLAY_NAMES[currentUser.email] === p.name;
-      const rankClass = i === 0 ? 'r1' : i === 1 ? 'r2' : i === 2 ? 'r3' : 'rn';
-      return `<tr class="${isMe ? 'me' : ''}">
-        <td><div class="rank-badge ${rankClass}">${i + 1}</div></td>
-        <td style="font-weight:${isMe ? '700' : '400'}">${p.name}${isMe ? ' <span style="font-size:11px;color:var(--text-muted)">(you)</span>' : ''}</td>
-        <td style="color:var(--text-muted);font-size:13px;">${p.bets}</td>
-        <td><span class="pts-badge">${p.points}</span></td>
-      </tr>`;
+    const rowClasses = ['top1','top2','top3'];
+    const rankClasses = ['rank-1','rank-2','rank-3'];
+    const medals = ['🥇','🥈','🥉'];
+    const rows = players.map((p, i) => {
+      const isMe = currentUser && currentUser.email === p.email;
+      const editBtn = isAdmin ? `<div class="lb-edit" onclick="openEditPoints('${p.email}','${p.name}',${p.points},${p.bets})"><i class="ti ti-pencil"></i></div>` : '';
+      return `<div class="lb-row ${isMe ? 'me' : ''} ${rowClasses[i] || ''}">
+        <div class="rank-num ${rankClasses[i] || 'rank-n'}">${medals[i] || (i+1)}</div>
+        <div class="lb-name">${p.name}${isMe ? '<span class="you-tag">ti</span>' : ''}</div>
+        <div class="lb-bets">${p.bets} ${p.bets === 1 ? 'tip' : 'tipa'}</div>
+        <div class="lb-pts">${p.points} pts</div>
+        ${editBtn}
+      </div>`;
     }).join('');
-
-    document.getElementById('standings-body').innerHTML = `
-      <table class="lb-table">
-        <thead><tr><th>#</th><th>Player</th><th>Bets</th><th>Points</th></tr></thead>
-        <tbody>${tbody}</tbody>
-      </table>`;
+    document.getElementById('lb-card').innerHTML = rows;
   }
 
-  // ── HALL OF FAME ──
+  window.openEditPoints = (email, name, points, bets) => {
+    document.getElementById('edit-pts-email').value = email;
+    document.getElementById('edit-pts-name-label').textContent = name;
+    document.getElementById('edit-pts-points').value = points;
+    document.getElementById('edit-pts-bets').value = bets;
+    document.getElementById('pts-modal').style.display = 'flex';
+  };
+  window.closePtsModal = () => { document.getElementById('pts-modal').style.display = 'none'; };
+  window.savePointsEdit = async () => {
+    const email = document.getElementById('edit-pts-email').value;
+    const points = parseInt(document.getElementById('edit-pts-points').value);
+    const bets = parseInt(document.getElementById('edit-pts-bets').value);
+    if (isNaN(points) || isNaN(bets)) { showToast('Unesi valjane brojeve!'); return; }
+    const snap = await getDocs(collection(db, 'scores'));
+    let uid = null;
+    snap.forEach(d => { if (d.data().email === email) uid = d.id; });
+    if (uid) {
+      await setDoc(doc(db, 'scores', uid), { points, bets, email, name: DISPLAY_NAMES[email] || email });
+    } else {
+      await addDoc(collection(db, 'scores'), { points, bets, email, name: DISPLAY_NAMES[email] || email });
+    }
+    closePtsModal();
+    showToast('Bodovi ažurirani!');
+    loadStandings();
+  };
+
+  // ── HOF ──
   async function loadHof() {
     const snap = await getDocs(query(collection(db, 'hallOfFame'), orderBy('createdAt', 'desc')));
     if (snap.empty) {
-      document.getElementById('hof-body').innerHTML = '<div class="empty"><i class="ti ti-trophy" style="font-size:36px;display:block;margin-bottom:8px;"></i>No season winners yet.<br>The first champion awaits!</div>';
+      document.getElementById('hof-body').innerHTML = '<div class="empty-state"><i class="ti ti-trophy"></i><p>Još nema pobjednika.<br>Prvi šampion čeka!</p></div>';
       return;
     }
-    const rows = snap.docs.map(d => {
+    const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+    document.getElementById('hof-body').innerHTML = snap.docs.map(d => {
       const w = d.data();
-      return `<div class="hof-row">
-        <div class="hof-trophy"><i class="ti ti-trophy" style="font-size:22px;"></i></div>
-        <div>
-          <div class="hof-name">${w.name}</div>
-          <div class="hof-season">Season ${w.season}</div>
-        </div>
-        <div class="hof-pts">${w.points} pts</div>
-      </div>`;
+      const adminBtns = isAdmin ? `
+        <div class="hof-actions">
+          <div class="hof-pts">${w.points} pts</div>
+          <button class="hof-btn" onclick="openHofEdit('${d.id}','${w.name}','${w.season}',${w.points})"><i class="ti ti-pencil"></i></button>
+          <button class="hof-btn del" onclick="deleteHofWinner('${d.id}')"><i class="ti ti-trash"></i></button>
+        </div>` : `<div class="hof-pts" style="margin-left:auto;">${w.points} pts</div>`;
+      return `<div class="hof-row"><div class="hof-trophy">🏆</div><div><div class="hof-winner">${w.name}</div><div class="hof-season">Sezona ${w.season}</div></div>${adminBtns}</div>`;
     }).join('');
-    document.getElementById('hof-body').innerHTML = rows;
   }
 
+  window.openHofEdit = (id, name, season, pts) => {
+    document.getElementById('edit-hof-id').value = id;
+    document.getElementById('edit-hof-name').value = name;
+    document.getElementById('edit-hof-season').value = season;
+    document.getElementById('edit-hof-pts').value = pts;
+    document.getElementById('hof-modal').style.display = 'flex';
+  };
+  window.closeHofModal = () => { document.getElementById('hof-modal').style.display = 'none'; };
+  window.saveHofEdit = async () => {
+    const id = document.getElementById('edit-hof-id').value;
+    const name = document.getElementById('edit-hof-name').value.trim();
+    const season = document.getElementById('edit-hof-season').value.trim();
+    const points = parseInt(document.getElementById('edit-hof-pts').value);
+    if (!name || !season || !points) { showToast('Popuni sva polja!'); return; }
+    await updateDoc(doc(db, 'hallOfFame', id), { name, season, points });
+    closeHofModal();
+    showToast('Pobjednik ažuriran!');
+    loadHof();
+  };
+  window.deleteHofWinner = async (id) => {
+    if (!confirm('Obrisati ovog pobjednika?')) return;
+    await deleteDoc(doc(db, 'hallOfFame', id));
+    showToast('Pobjednik obrisan.');
+    loadHof();
+  };
+
+  // ── HISTORY ──
+  async function loadHistory() {
+    const snap = await getDocs(query(collection(db, 'matchHistory'), orderBy('revealedAt', 'desc')));
+    const body = document.getElementById('history-body');
+    if (snap.empty) {
+      body.innerHTML = '<div class="empty-state"><i class="ti ti-calendar-stats"></i><p>Još nema odigranih kola.<br>Povijest će se popuniti nakon prvog meča!</p></div>';
+      return;
+    }
+    const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+    body.innerHTML = snap.docs.map(d => {
+      const m = d.data();
+      const winner = (m.results || []).find(r => r.isWinner);
+      const logoHtml = m.logoUrl ? `<img src="${m.logoUrl}" style="width:32px;height:32px;object-fit:contain;" />` : `<span style="font-size:24px;">⚽</span>`;
+      const resultsHtml = (m.results || []).map(r => `
+        <div class="hist-result-row">
+          <span class="hist-result-name">${r.name}</span>
+          <span class="hist-result-val">${r.value.toLocaleString()}</span>
+          <span class="hist-result-diff">±${r.diff.toLocaleString()}</span>
+          <span class="hist-result-pts ${r.pts > 0 ? 'has-pts' : ''}">${r.pts > 0 ? '+' + r.pts : '—'}</span>
+          ${r.isWinner ? '<span style="font-size:14px;">👑</span>' : ''}
+        </div>`).join('');
+      const adminBtns = isAdmin ? `
+        <div class="hist-admin-btns">
+          <button class="hof-btn" onclick="openEditHistory('${d.id}')"><i class="ti ti-pencil"></i></button>
+          <button class="hof-btn del" onclick="deleteHistory('${d.id}')"><i class="ti ti-trash"></i></button>
+        </div>` : '';
+      return `<div class="hist-card">
+        <div class="hist-card-head">
+          <div class="hist-logo">${logoHtml}</div>
+          <div class="hist-match-info">
+            <div class="hist-opponent">Hajduk vs ${m.opponent}</div>
+            <div class="hist-meta">${formatDate(m.date)} · ${m.round || m.league || 'HNL'}</div>
+          </div>
+          <div class="hist-attendance">
+            <div class="hist-att-num">${m.actualAttendance.toLocaleString()}</div>
+            <div class="hist-att-label">gledatelja</div>
+          </div>
+          ${adminBtns}
+        </div>
+        <div class="hist-winner-bar">
+          <i class="ti ti-crown" style="font-size:13px;"></i>
+          Pobjednik: <strong>${winner ? winner.name : '—'}</strong>
+          ${winner ? `· tip: ${winner.value.toLocaleString()} (±${winner.diff.toLocaleString()})` : ''}
+        </div>
+        <div class="hist-results-wrap" id="hist-res-${d.id}" style="display:none;">${resultsHtml}</div>
+        <button class="hist-toggle-btn" onclick="toggleHist('${d.id}',this)"><i class="ti ti-chevron-down"></i> Prikaži sve tipove</button>
+      </div>`;
+    }).join('');
+  }
+
+  window.toggleHist = (id, btn) => {
+    const w = document.getElementById('hist-res-' + id);
+    const open = w.style.display !== 'none';
+    w.style.display = open ? 'none' : 'block';
+    btn.innerHTML = open ? '<i class="ti ti-chevron-down"></i> Prikaži sve tipove' : '<i class="ti ti-chevron-up"></i> Sakrij tipove';
+  };
+
+  window.openEditHistory = async (id) => {
+    const docSnap = await getDoc(doc(db, 'matchHistory', id));
+    if (!docSnap.exists()) return;
+    const m = docSnap.data();
+    document.getElementById('edit-hist-id').value = id;
+    document.getElementById('edit-hist-opponent').value = m.opponent;
+    document.getElementById('edit-hist-date').value = m.date;
+    document.getElementById('edit-hist-round').value = m.round || '';
+    document.getElementById('edit-hist-attendance').value = m.actualAttendance;
+    document.getElementById('edit-hist-results').innerHTML = (m.results || []).map((r, i) => `
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);">
+        <span style="font-size:13px;font-weight:700;flex:1;">${r.name}</span>
+        <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">TIP</div>
+        <input type="number" value="${r.value}" id="ehr-val-${i}" style="width:85px;padding:6px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;font-weight:700;" /></div>
+        <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">PTS</div>
+        <input type="number" value="${r.pts}" id="ehr-pts-${i}" style="width:55px;padding:6px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;font-weight:700;" /></div>
+      </div>`).join('');
+    document.getElementById('edit-hist-results').dataset.count = (m.results || []).length;
+    document.getElementById('hist-modal').style.display = 'flex';
+  };
+  window.closeHistModal = () => { document.getElementById('hist-modal').style.display = 'none'; };
+  window.saveHistEdit = async () => {
+    const id = document.getElementById('edit-hist-id').value;
+    const opponent = document.getElementById('edit-hist-opponent').value.trim();
+    const date = document.getElementById('edit-hist-date').value;
+    const round = document.getElementById('edit-hist-round').value.trim();
+    const actualAttendance = parseInt(document.getElementById('edit-hist-attendance').value);
+    if (!opponent || !date || !actualAttendance) { showToast('Popuni obavezna polja!'); return; }
+    const count = parseInt(document.getElementById('edit-hist-results').dataset.count || 0);
+    const docSnap = await getDoc(doc(db, 'matchHistory', id));
+    const oldResults = docSnap.data().results || [];
+    const newResults = oldResults.map((r, i) => {
+      const newVal = parseInt(document.getElementById('ehr-val-' + i)?.value) || r.value;
+      const newPts = parseInt(document.getElementById('ehr-pts-' + i)?.value) || 0;
+      const newDiff = Math.abs(newVal - actualAttendance);
+      return { ...r, value: newVal, pts: newPts, diff: newDiff };
+    });
+    const minDiff = Math.min(...newResults.map(r => r.diff));
+    newResults.forEach(r => { r.isWinner = r.diff === minDiff && r.pts >= 1; });
+    await updateDoc(doc(db, 'matchHistory', id), { opponent, date, round, actualAttendance, results: newResults });
+    closeHistModal();
+    showToast('Povijest ažurirana!');
+    loadHistory();
+  };
+  window.deleteHistory = async (id) => {
+    if (!confirm('Obrisati ovaj meč iz povijesti?')) return;
+    await deleteDoc(doc(db, 'matchHistory', id));
+    showToast('Meč obrisan iz povijesti.');
+    loadHistory();
+  };
+
   // ── ADMIN ──
-  window.pickEmoji = (el, emoji) => {
-    document.querySelectorAll('.emoji-opt').forEach(e => e.classList.remove('sel'));
+  window.selectClub = (el, name, logoUrl) => {
+    document.querySelectorAll('.club-opt').forEach(e => e.classList.remove('sel'));
     el.classList.add('sel');
-    selectedEmoji = emoji;
+    selectedClubName = name;
+    selectedLogoUrl = logoUrl;
+    document.getElementById('a-custom-name').value = '';
   };
 
   window.saveMatch = async () => {
-    const opponent = document.getElementById('a-opponent').value.trim();
+    const customName = document.getElementById('a-custom-name').value.trim();
     const date = document.getElementById('a-date').value;
     const time = document.getElementById('a-time').value;
     const round = document.getElementById('a-round').value.trim();
-    if (!opponent || !date || !time) { showToast('Fill in opponent, date and time!'); return; }
-    await setDoc(doc(db, 'config', 'currentMatch'), {
-      opponent, date, time, round,
-      emblem: selectedEmoji,
-      revealed: false,
-      createdAt: new Date().toISOString()
-    });
-    // clear bets collection for new match
+    const league = document.getElementById('a-league').value.trim() || 'HNL';
+    const opponent = customName || selectedClubName;
+    const logoUrl = customName ? '' : selectedLogoUrl;
+    if (!opponent) { showToast('Odaberi ili upiši protivnika!'); return; }
+    if (!date || !time) { showToast('Unesi datum i vrijeme!'); return; }
     const betsSnap = await getDocs(collection(db, 'bets'));
-    for (const b of betsSnap.docs) {
-      await setDoc(doc(db, 'bets', b.id), {});
-    }
-    showToast('Match saved! Betting is now open.');
+    for (const b of betsSnap.docs) await deleteDoc(doc(db, 'bets', b.id));
+    await setDoc(doc(db, 'config', 'currentMatch'), {
+      opponent, date, time, round, league, logoUrl,
+      revealed: false, createdAt: new Date().toISOString()
+    });
+    showToast('Meč postavljen! Klađenje je otvoreno.');
     loadMatch();
   };
 
   window.revealAndScore = async () => {
     const actual = parseInt(document.getElementById('a-actual').value);
-    if (!actual || actual < 1000) { showToast('Enter actual attendance!'); return; }
-
+    if (!actual || actual < 1000) { showToast('Unesi stvarni broj gledatelja!'); return; }
     const betsSnap = await getDocs(collection(db, 'bets'));
     const bets = [];
-    betsSnap.forEach(d => {
-      const data = d.data();
-      if (data.value) bets.push({ uid: d.id, ...data });
-    });
-
+    betsSnap.forEach(d => { const data = d.data(); if (data.value) bets.push({ uid: d.id, ...data }); });
     if (!bets.length) {
-      document.getElementById('reveal-area').innerHTML = '<div class="alert alert-warning" style="margin-top:12px;"><i class="ti ti-info-circle"></i> No bets placed for this match.</div>';
+      document.getElementById('reveal-area').innerHTML = '<div class="alert alert-warning" style="margin-top:12px;"><i class="ti ti-info-circle"></i> Nitko nije stavio tip za ovaj meč.</div>';
       return;
     }
 
-    let minDiff = Infinity;
-    bets.forEach(b => { const d = Math.abs(b.value - actual); if (d < minDiff) minDiff = d; });
-    const closestUids = bets.filter(b => Math.abs(b.value - actual) === minDiff).map(b => b.uid);
+    // Sort by closeness
+    const basePoints = [10, 8, 6, 4, 2, 1];
+    const sorted = [...bets].sort((a, b) => Math.abs(a.value - actual) - Math.abs(b.value - actual));
 
+    // Assign ranks handling ties (same diff = same rank)
     const awarded = {};
-    for (const b of bets) {
-      const diff = Math.abs(b.value - actual);
-      let pts = 0;
-      if (diff === 0) pts = 3;
-      else if (diff <= 50) pts = 2;
-      else if (closestUids.includes(b.uid)) pts = 1;
-      awarded[b.uid] = pts;
+    let i = 0;
+    while (i < sorted.length) {
+      const diff = Math.abs(sorted[i].value - actual);
+      // Find all tied at this rank
+      let j = i;
+      while (j < sorted.length && Math.abs(sorted[j].value - actual) === diff) j++;
+      // All from i to j-1 get the points of rank i (0-indexed)
+      const rankPts = basePoints[i] || 0;
+      for (let k = i; k < j; k++) {
+        const b = sorted[k];
+        const absDiff = Math.abs(b.value - actual);
+        let pts = rankPts;
+        if (absDiff === 0) pts += 30;       // exact bonus
+        else if (absDiff <= 50) pts += 5;   // ±50 bonus
+        awarded[b.uid] = pts;
+      }
+      i = j;
+    }
 
+    // Save scores
+    for (const b of bets) {
       const scoreRef = doc(db, 'scores', b.uid);
       const scoreDoc = await getDoc(scoreRef);
       const prev = scoreDoc.exists() ? scoreDoc.data() : { points: 0, bets: 0 };
-      await setDoc(scoreRef, {
-        points: (prev.points || 0) + pts,
-        bets: (prev.bets || 0) + 1,
-        name: b.name,
-        email: b.email,
-      });
+      await setDoc(scoreRef, { points: (prev.points || 0) + (awarded[b.uid] || 0), bets: (prev.bets || 0) + 1, name: b.name, email: b.email });
     }
 
     await updateDoc(doc(db, 'config', 'currentMatch'), { revealed: true, actualAttendance: actual });
 
-    const sorted = [...bets].sort((a, b) => Math.abs(a.value - actual) - Math.abs(b.value - actual));
-    const rows = sorted.map(b => {
-      const diff = Math.abs(b.value - actual);
-      const pts = awarded[b.uid];
-      const isWinner = closestUids.includes(b.uid);
-      return `<div class="bet-reveal-row">
-        <span style="font-weight:600;">${b.name}</span>
-        <span>${b.value.toLocaleString()}</span>
-        <span class="diff-tag">±${diff.toLocaleString()}</span>
-        <span class="pts-badge">${pts > 0 ? '+' + pts + ' pts' : '—'}</span>
-        ${isWinner && pts >= 1 ? '<span class="winner-tag">winner</span>' : ''}
-      </div>`;
-    }).join('');
+    // Save to history
+    const m = window.currentMatch;
+    await addDoc(collection(db, 'matchHistory'), {
+      opponent: m.opponent, logoUrl: m.logoUrl || '', date: m.date, time: m.time,
+      round: m.round || '', league: m.league || 'HNL', actualAttendance: actual,
+      revealedAt: new Date().toISOString(),
+      results: sorted.map(b => ({
+        name: b.name, value: b.value, diff: Math.abs(b.value - actual),
+        pts: awarded[b.uid] || 0, isWinner: sorted.indexOf(b) === 0,
+      })),
+    });
 
+    // Show results
     document.getElementById('reveal-area').innerHTML = `
-      <div class="bets-reveal">
-        <div style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">
-          Actual attendance: <strong style="color:var(--text);">${actual.toLocaleString()}</strong>
-        </div>
-        ${rows}
+      <div class="reveal-result">
+        <div class="reveal-actual">Stvarni broj: <strong>${actual.toLocaleString()}</strong></div>
+        ${sorted.map((b, idx) => {
+          const diff = Math.abs(b.value - actual);
+          const pts = awarded[b.uid] || 0;
+          const isFirst = idx === 0;
+          let bonus = '';
+          if (diff === 0) bonus = '<span style="font-size:11px;background:#fef3c7;color:#92400e;border-radius:99px;padding:2px 7px;font-weight:700;">+30 exact</span>';
+          else if (diff <= 50) bonus = '<span style="font-size:11px;background:#e8f0ff;color:#1d4ed8;border-radius:99px;padding:2px 7px;font-weight:700;">+5 bonus</span>';
+          return `<div class="reveal-row">
+            <span class="reveal-name">${b.name}</span>
+            <span class="reveal-val">${b.value.toLocaleString()}</span>
+            <span class="reveal-diff">±${diff.toLocaleString()}</span>
+            ${bonus}
+            <span class="reveal-pts">+${pts}</span>
+            ${isFirst ? '<span style="font-size:16px;">👑</span>' : ''}
+          </div>`;
+        }).join('')}
       </div>`;
 
-    loadStandings();
-    showToast('Bets revealed and points awarded!');
+    loadStandings(); loadHistory();
+    showToast('Tipovi otkriveni i bodovi dodijeljeni!');
   };
 
   window.addHofWinner = async () => {
     const name = document.getElementById('hw-name').value.trim();
     const season = document.getElementById('hw-season').value.trim();
     const points = parseInt(document.getElementById('hw-pts').value);
-    if (!name || !season || !points) { showToast('Fill all fields!'); return; }
+    if (!name || !season || !points) { showToast('Popuni sva polja!'); return; }
     await addDoc(collection(db, 'hallOfFame'), { name, season, points, createdAt: new Date().toISOString() });
     document.getElementById('hw-name').value = '';
     document.getElementById('hw-season').value = '';
     document.getElementById('hw-pts').value = '';
-    showToast('Added to hall of fame!');
+    showToast('Dodano u Hall of fame! 🏆');
     loadHof();
   };
 
-  // ── HELPERS ──
+  window.deleteCurrentMatch = async () => {
+    if (!confirm('Obrisati trenutni meč i sve tipove za njega? Bodovi ostaju netaknuti.')) return;
+    const betsSnap = await getDocs(collection(db, 'bets'));
+    for (const b of betsSnap.docs) await deleteDoc(doc(db, 'bets', b.id));
+    await setDoc(doc(db, 'config', 'currentMatch'), { opponent: '', revealed: false });
+    showToast('Meč obrisan.');
+    loadMatch();
+  };
+
+  window.clearAllData = async () => {
+    if (!confirm('Ovo će obrisati SVE tipove i SVE bodove. Siguran si?')) return;
+    const betsSnap = await getDocs(collection(db, 'bets'));
+    for (const b of betsSnap.docs) await deleteDoc(doc(db, 'bets', b.id));
+    const scoresSnap = await getDocs(collection(db, 'scores'));
+    for (const s of scoresSnap.docs) await deleteDoc(doc(db, 'scores', s.id));
+    await setDoc(doc(db, 'config', 'currentMatch'), { opponent: '', revealed: false });
+    showToast('Svi podaci obrisani.');
+    loadMatch(); loadStandings();
+  };
+
   function isDeadlinePassed(date, time) {
     if (!date || !time) return false;
-    const matchDT = new Date(date + 'T' + time);
-    const deadline = new Date(matchDT.getTime() - 30 * 60 * 1000);
-    return new Date() >= deadline;
+    return new Date() >= new Date(new Date(date + 'T' + time).getTime() - 30 * 60 * 1000);
   }
 
   function formatDate(d) {
     if (!d) return '—';
-    const dt = new Date(d + 'T12:00:00');
-    return dt.toLocaleDateString('hr-HR', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+    return new Date(d + 'T12:00:00').toLocaleDateString('hr-HR', { weekday: 'short', day: 'numeric', month: 'long' });
   }
 
   function showToast(msg) {
@@ -827,10 +1068,6 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3000);
   }
-
-  window.loadStandings = loadStandings;
-  window.loadHof = loadHof;
-  window.loadMatch = loadMatch;
 </script>
 </body>
 </html>
